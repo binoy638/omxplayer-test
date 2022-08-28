@@ -42,7 +42,6 @@ def main():
             sys.stdout = subprocess.PIPE 
             proc = None 
             try:
-                print(f'playing: {f}')
                 proc = subprocess.run(full_command,check=True,stdin=subprocess.PIPE,stdout=sys.stdout,close_fds=True)
             except KeyboardInterrupt:
                 if proc is not None:
