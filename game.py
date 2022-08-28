@@ -1,7 +1,7 @@
 import pygame
 import os
 os.environ["DISPLAY"] = ":0"
-pygame.init()
+pygame.display.init()
 
 # Set up the drawing window
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN | pygame.NOFRAME)
