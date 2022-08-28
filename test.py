@@ -7,6 +7,11 @@ from os.path import isfile, join
 
 import subprocess
 
+import pygame
+pygame.init()
+
+screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN | pygame.NOFRAME)
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 omx_command = ['omxplayer', "-o", "hdmi", "-b"]
@@ -36,7 +41,7 @@ def main():
     #         sys.exit()
     #     except Exception as e:
     #         # logging.exception()
-    while True:
+
         for f in playlist:
             full_command = omx_command + [f]
             sys.stdout = subprocess.PIPE 
@@ -50,10 +55,18 @@ def main():
             except Exception as e:
                 print(e)
 
-    print('done')
 
 
+running = True
 
-main()
+while running:
+    main()
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE: 
+                running = False
+
+pygame.quit()
+
 
 
