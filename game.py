@@ -1,5 +1,5 @@
 import pygame
-
+import os
 os.environ["DISPLAY"] = ":0"
 pygame.init()
 
