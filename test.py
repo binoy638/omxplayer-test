@@ -7,6 +7,8 @@ from os.path import isfile, join
 
 import subprocess
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 omx_command = ['omxplayer', "-o", "hdmi", "-b"]
 
 def getFullPath(filename):
