@@ -1,6 +1,7 @@
 
 import sys, argparse, logging
 
+import os
 from os import listdir
 from os.path import isfile, join
 
@@ -8,14 +9,19 @@ import subprocess
 
 omx_command = ['omxplayer', "-o", "hdmi", "-b"]
 
-def generatePlaylist(inpath):
-    return [f for f in listdir(inpath) if isfile(join(inpath, f))]
+def getFullPath(filename):
+    return BASE_DIR + '/videos/' + filename
+
+playlist = [getFullPath('dog.mp4'),getFullPath('dog2.mp4')]
+
+# def generatePlaylist(inpath):
+#     return [f for f in listdir(inpath) if isfile(join(inpath, f))]
 
 def main(args, loglevel):
     logging.basicConfig(format="%(levelname)s: %(message)s", level=loglevel)
 
     #[omx_command.append(f) for f in args.remaining] # add extra OMX commands to end, sort of janky
-    playlist = generatePlaylist(args.directory)
+    # playlist = generatePlaylist(args.directory)
 
     for f in playlist:
         full_path = args.directory + "/" + f
@@ -36,3 +42,4 @@ def main(args, loglevel):
             sys.exit()
         except Exception as e:
             logging.exception()
+
