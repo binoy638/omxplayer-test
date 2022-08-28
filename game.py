@@ -1,4 +1,6 @@
 import pygame
+
+os.environ["DISPLAY"] = ":0"
 pygame.init()
 
 # Set up the drawing window

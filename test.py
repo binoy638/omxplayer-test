@@ -8,6 +8,8 @@ from os.path import isfile, join
 import subprocess
 
 import pygame
+
+os.environ["DISPLAY"] = ":0"
 pygame.init()
 
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN | pygame.NOFRAME)
